@@ -1,5 +1,24 @@
 # Écrire un DSL en quelques lignes - ou l'art du copié-collé
 
+## Utiliser une solution en ligne
+
+Vous pouvez utiliser Glitch en "remixant" le projet suivant :
+https://glitch.com/edit/#!/intro-to-fp-01
+
+Cette solution a l'avantage de n'avoir rien besoin d'installer et de partager
+facilement son travail.
+
+En revanche, l'édition peut souffrir d'une certaine lenteur par rapport à
+un éditeur local.
+
+Vous devrez recharger la page sur l'aperçu à droite (ou en ouvrant un aperçu
+dans une autre fenêtre) pour voir changements.
+
+## Lancer le projet localement
+
+Alternativement vous pouvez utiliser faire tourner le projet sur
+votre ordinateur. Il faut avoir Python et pip installé.
+
 Installer les dépendances (juste flask!):
 
 ```
@@ -34,7 +53,7 @@ Voir le (super!) site: http://localhost:5000 (il faut par contre recharger la pa
 
    Bien sûr vérifiez que ça marche : http://localhost:5000/about-me.
 
-4. Hum hum, ça commence à devenir touffu! Regardons bien ce qui change entre ces 2
+4. Hum hum, le code commence à devenir touffu! Regardons bien ce qui change entre ces 2
    fonctions: le `title` et le contenu des pages. À défaut d'avoir un contenu
    intéressant, organisons notre code de façon potable : créez une fonction
    `layout(title, content)` pour que la fonction `home` ressemble à (là encore, vous êtes encouragés à utiliser les touches "ctrl" "c" et "v" de votre clavier\*\*) :
