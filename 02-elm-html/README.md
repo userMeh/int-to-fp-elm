@@ -3,7 +3,7 @@
 Nous allons ici reproduire à peu près le même exercice qu'on a fait en python,
 mais en utilisant Elm pour s'habituer à sa syntaxe.
 
-Pour lancer le projet ((il faut avoir installé Elm avant)[https://guide.elm-lang.org/install/elm.html] -- ne faites que la partie "Install"):
+Pour lancer le projet ([il faut avoir installé Elm avant](https://guide.elm-lang.org/install/elm.html) -- ne faites que la partie "Install"):
 
 ```
 elm reactor
@@ -12,7 +12,7 @@ elm reactor
 Vous pouvez maintenant accéder à http://localhost:8000/src/Main.elm. Vous devrez recharger la page à chaque fois que vous faites des modifications.
 
 Pour simplifier le processus, toutes les écrans sont regroupés dans une seule page
-et séparés par une bande rouge. Il y a pour l'instant une page d'accueil et une page
+et séparés par une bande rouge. Il n'y a pour l'instant une page d'accueil et une page
 "présentation" (qui sera à compléter).
 
 ## Exercices
