@@ -1,6 +1,6 @@
 # Dessine moi un mouton
 
-Les navigateur proposent une librairie de dessin 2D nommée "canvas".
+Les navigateurs proposent une librairie de dessin 2D nommée "canvas".
 Cette librairie n'est pas forcément évidente à prendre en main et
 repose fortement sur le paradigme impératif (il faut appeler
 spécifiquement les fonctions dans un certain ordre pour dessiner ce qu'on
@@ -11,6 +11,14 @@ Le but de ce projet (à faire en tant que "devoir maison") est de créer une lib
 Cette librairie permet de construire son dessin de façon purement
 déclarative, puis avec `renderCentered` dessiner sur le canvas en
 un seul effet de bord.
+
+## Instruction pour rendre le TP
+
+Publiez sur Github le dossier 03-homework-canvas comme un repo public et envoyez moi le
+lien (oui un repo public. Je vous fais confiance pour faire vous même le travail. Je n'irai
+pas vérifier s'il y a plagiat ou non, vous travaillez pour vous. Tout le monde se fichera
+comme d'une guigne de la note que vous aurez eu au cours de programmation fonctionnelle
+d'ici 2 ans).
 
 ## Organisation des fichiers
 
@@ -24,12 +32,12 @@ Voici les différents fichiers dans le dossier `src`:
 
 ## Lancement du projet, vérification des types
 
-Javascript n'inclut (pour l'instant ?) pas de typage statique. Typescript le propose, mais
+Javascript n'inclut (pour l'instant) pas de typage statique. Typescript le propose, mais
 les navigateurs n'interprètent pas directement ce langage, il y a besoin d'une phase de
 transpilation.
 
 Pour simplifier la mise en route au maximum, nous utiliserons donc la technologie
-`JsDoc` permettant d'avoir à peu le même contrôle de types qu'avec Typescript
+`JsDoc` permettant d'avoir à peu près le même contrôle de types qu'avec Typescript
 (+ complétions et autres goodies de nos IDEs) tout en étant directement exécutable par
 le navigateur (ce ne sont que des commentaires!). Le prix à payer est un code un peu
 plus verbeux.
@@ -89,14 +97,14 @@ donnant sa liste des coordonnées.
     `{ kind: "Polygon", points: Array<{x: number; y:number}>}`
     dans la définition du type `Shape`.
 3.  Gérez ce nouveau cas partout où on fait un `switch(shape.kind)`.
-4.  Ajoutez une fonction:
+4.  Ajoutez une fonction en complétant la définition suivante:
     ```js
     /**
      * @param {Color} color
      * @param {Array<{x:number; y:number}>} points
      * @returns {Shape}
      */
-    export function polygon(color, points)
+    export function polygon(color, points) {}
     ```
 5.  Oh mais tiens! Un carré c'est un polygone! On va donc supprimer ce
     variant `kind: "Square"`. Il faudra alors:
@@ -106,7 +114,7 @@ donnant sa liste des coordonnées.
       calculer les coordonnées des points).
     - supprimer la fonction `renderSquare`
     - supprimer tous les `case "Square"`.
-6.  Créez une fonction:
+6.  Ajoutez une fonction en complétant la définition suivante:
     ```js
     /**
      * @param {Color} color
@@ -114,12 +122,12 @@ donnant sa liste des coordonnées.
      * @param {number} height
      * @returns {Shape}
      */
-    export function rectangle(color, width, height)
+    export function rectangle(color, width, height) {}
     ```
     Le rectangle sera centré autour du point `{x:0, y:0}`.
 7.  Rendez-vous sur la page [http://localhost:8000/src/index2.html](http://localhost:8000/src/index2.html), vous devriez y voir le dessin [robot.png](./robot.png).
 
 ## Partie 3
 
-Créez des fichiers index3.html et index3.js qui affiche plusieurs arbres et des moutons. On utilisera des variables (constantes) et
+Créez des fichiers index3.html et index3.js qui permettent d'afficher plusieurs arbres et des moutons. On utilisera des variables (constantes) et
 des fonctions pour éviter les redondances de code.
