@@ -74,7 +74,7 @@ et séparés par une bande rouge. Il n'y a pour l'instant une page d'accueil et 
         , "Un aller-retour en avion Paris New York émet 1.75 tonne de CO2"
         , "Il y 20 000 ans, la température était 5°C en-dessous de celle de l'ère pré-industrielle et les mers étaient 120m plus basses."
         , "Pour respecter les accords de Paris et rester sous les 2°C de réchauffement, il faut que chaque personne émette 2 tonnes d'équivalent CO2 par an."
-        , "L'empreinte carbonne annuelle d'un Français est de 9 tonnes d'équivalent CO2",
+        , "L'empreinte carbonne annuelle d'un Français est de 9 tonnes d'équivalent CO2"
         , "On peut baisser nos émissions de gaz à effet de serre significativement en mangeant moins de viande"
         ]
    ```
@@ -143,7 +143,7 @@ et séparés par une bande rouge. Il n'y a pour l'instant une page d'accueil et 
 
    ```
 
-   Tentez de compiler sans changer d'autres chose.... Patatra, un sale erreur pas
+   Tentez de compiler sans changer d'autres chose.... Patatra, une sale erreur pas
    facile à comprendre. La principale difficulté ici est que l'erreur n'est pas
    indiqué à l'endroit le plus opportun.
 
