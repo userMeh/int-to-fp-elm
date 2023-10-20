@@ -4,7 +4,7 @@ import Html as H exposing (Html)
 import Html.Attributes as HA
 
 
-homePage =
+homeScreen =
     H.div [ HA.class "h-screen flex" ]
         [ H.div
             [ HA.class "w-1/4 h-screen bg-gray-200" ]
@@ -38,7 +38,7 @@ homePage =
         ]
 
 
-aboutMePage =
+aboutMeScreen =
     H.text "C'est moi !"
 
 
@@ -51,11 +51,11 @@ main =
             , HA.attribute "rel" "stylesheet"
             ]
             []
-        , homePage
-        , pageSeparator
-        , aboutMePage
+        , homeScreen
+        , separatorScreen
+        , aboutMeScreen
         ]
 
 
-pageSeparator =
+separatorScreen =
     H.div [ HA.class "bg-red-500 h-10" ] []
