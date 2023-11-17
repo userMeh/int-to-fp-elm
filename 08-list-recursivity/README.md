@@ -135,7 +135,7 @@ grâce au schéma suivant (lire en partant de la droite):
 Au début on a une coquille vide (c'est une liste). On y
 ajoute devant l'élément 6, constituant la liste `[6]`.
 Devant cette liste, on ajoute l'élément 5, constituant la
-liste `[5]`, etc, ...
+liste `[5, 6]`, etc, ...
 
 Comprendre cette structure va nous permettre de facilement écrire
 des fonctions récursives sur les listes. Elles se décomposeront
