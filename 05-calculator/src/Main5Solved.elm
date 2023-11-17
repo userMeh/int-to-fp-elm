@@ -68,10 +68,10 @@ view model =
 
                 -- Le caractère _ est une sorte de "joker", toutes les valeurs vont vérifier cette branche
                 ( Nothing, _ ) ->
-                    H.text "Le deuxième champ n'est pas un nombre !!"
+                    H.text "Le premier champ n'est pas un nombre !!"
 
                 ( _, Nothing ) ->
-                    H.text "Le premier champ n'est pas un nombre !!"
+                    H.text "Le deuxième champ n'est pas un nombre !!"
             ]
         ]
 
