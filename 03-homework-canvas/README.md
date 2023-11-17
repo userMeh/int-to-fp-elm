@@ -131,3 +131,5 @@ donnant sa liste des coordonnées.
 
 Créez des fichiers index3.html et index3.js qui permettent d'afficher plusieurs arbres et des moutons. On utilisera des variables (constantes) et
 des fonctions pour éviter les redondances de code.
+
+Faites une copie d'écran et ajoutez la au repos qu'on puisse admirer vos talents d'artistes !
