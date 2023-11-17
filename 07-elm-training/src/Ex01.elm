@@ -10,11 +10,7 @@ todos =
     , "Appeler le jardinier"
     , "Renvoyer le formulaire à la mairie"
     ]
-
-
-viewTodo todo =
-    H.li [] [ H.text todo ]
-
+    
 
 main =
-    H.ul [] (List.map viewTodo todos)
+    H.ul [] (List.map (\todo -> H.li [] [ H.text todo ]) todos)

@@ -19,8 +19,7 @@ exampleInput =
 
 
 computeAnswer1 input =
-    -- complete this function !!
-    42
+    input |> List.map(String.toInt)
 
 
 exampleAnswer1 =

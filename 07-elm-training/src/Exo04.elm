@@ -102,11 +102,9 @@ candidates =
     , "Eorl"
     ]
 
-
 countLegendaryHeroes : List String -> Int
 countLegendaryHeroes heroes =
-    -- Maybe this will be good this time ??
-    42
+    heroes |> List.filter (\hero -> String.length hero > 7) |> List.length
 
 
 test =

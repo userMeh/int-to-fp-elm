@@ -3,7 +3,7 @@ module Ex02 exposing (..)
 
 toAges : List Int -> List String
 toAges ages =
-    [ "TODO!!!!" ]
+    ages |> List.map String.fromInt |> List.map (\age -> age ++ " ans")
 
 
 test =

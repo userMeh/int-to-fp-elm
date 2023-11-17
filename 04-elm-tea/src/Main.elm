@@ -12,6 +12,7 @@ type alias Model =
 type Msg
     = IncrementClicked
     | DecrementClicked
+    | ResetClicked
 
 
 init : Model
@@ -28,6 +29,9 @@ update msg model =
         DecrementClicked ->
             { model | count = model.count - 1 }
 
+        ResetClicked ->
+            { model | count = 0 }
+
 
 view : Model -> Html Msg
 view model =
@@ -35,6 +39,7 @@ view model =
         [ H.div [] [ H.button [ HE.onClick IncrementClicked ] [ H.text "+" ] ]
         , H.div [] [ H.text (String.fromInt model.count) ]
         , H.div [] [ H.button [ HE.onClick DecrementClicked ] [ H.text "-" ] ]
+        , H.div [] [ H.button [ HE.onClick ResetClicked ] [ H.text "Reset" ] ]
         ]
 
 
