@@ -1,4 +1,4 @@
-module Exo04 exposing (..)
+module Ex04 exposing (..)
 
 
 candidates =
