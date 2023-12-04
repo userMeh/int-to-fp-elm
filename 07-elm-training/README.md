@@ -202,7 +202,7 @@ sumOfGoodNumbers numbers =
 
 5. Vous avez terminez le jour 1 ? Bravo, maintenant attaquez vous au jour 2, puis 3 !
 
-\*_Note_: et à ce moment du cours, vos yeux s'illument et vous comprenez pourquoi
+\*_Note_: et à ce moment du cours, vos yeux s'illuminent et vous comprenez pourquoi
 une fonction à deux arguments est annotée `add: Int -> Int -> Int`. En passant un
 premier argument : `add 5` on a juste remplacé le premier `Int`, et donc
 `add 5 : Int -> Int` est encore une fonction ! Ce qui nous permet de la placer
