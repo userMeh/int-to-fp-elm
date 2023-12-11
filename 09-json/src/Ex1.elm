@@ -21,6 +21,10 @@ testAge =
     }
 
 
+
+--------------------------------
+
+
 encodeName : String -> Value
 encodeName name =
     Debug.todo "name"
@@ -36,6 +40,10 @@ testName =
     }
 
 
+
+--------------------------------
+
+
 encodeListOfInts : List Int -> Value
 encodeListOfInts ints =
     Debug.todo "listOfInts"
@@ -49,6 +57,10 @@ testListOfInts =
     { test1 = test [ 1, 2, 3 ]
     , test2 = test [ 42, -95, 15, 10 ]
     }
+
+
+
+--------------------------------
 
 
 type alias Person =
@@ -70,6 +82,10 @@ testPerson =
     { test1 = test { name = "Seb", age = 42 }
     , test2 = test { name = "Charlie", age = 54 }
     }
+
+
+
+--------------------------------
 
 
 {-| The Person type stays the same, but the json representation should
@@ -98,6 +114,10 @@ testPerson2 =
     }
 
 
+
+--------------------------------
+
+
 type alias Product =
     { name : String
     , price : Int
@@ -120,6 +140,10 @@ testProduct =
     { test1 = test { name = "Table", price = 53 }
     , test2 = test { name = "Chaise", price = 12 }
     }
+
+
+
+--------------------------------
 
 
 type alias Order =
@@ -163,6 +187,10 @@ testOrder =
     }
 
 
+
+--------------------------------
+
+
 type alias FriendlyPerson =
     { name : String
     , age : Int
@@ -192,6 +220,10 @@ testFriendlyPerson =
     { test1 = test { name = "Seb", age = 42, friends = [ { name = "Hector", age = 45 }, { name = "Gandhalf", age = 1503 } ] }
     , test2 = test { name = "Charlie", age = 54, friends = [] }
     }
+
+
+
+--------------------------------
 
 
 type Shape
@@ -245,6 +277,10 @@ testShape =
     , test2 = test (Square { side = 10 })
     , test3 = test (Rect { width = 20, length = 30 })
     }
+
+
+
+--------------------------------
 
 
 {-| Encode a dictionary associating an id to a person in a
