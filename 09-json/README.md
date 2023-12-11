@@ -45,10 +45,10 @@ myJsonValue = JE.int 5
 JE.encode 4 myJsonValue
 ```
 
-Pour la suite, vous aurez besoin de la documentation : vous détaillant toutes
-les fonctions à disposition: https://package.elm-lang.org/packages/elm/json/latest/Json-Encode
-(ne lisez pas tout d'un coup, allez chercher ce dont vous avez besoin au fur et
-à mesure des exercices).
+Pour la suite, vous aurez besoin de la documentation vous détaillant toutes
+les fonctions à disposition (ne lisez pas tout d'un coup, allez chercher ce dont
+vous avez besoin au fur et à mesure des exercices):
+https://package.elm-lang.org/packages/elm/json/latest/Json-Encode .
 
 Vous pouvez maintenant vous lancer dans l'exercice `src/Ex1.elm`. Il faut écrire
 un encodeur pour chacun des types présentés. Sauf mention contraire, il faut
@@ -294,9 +294,10 @@ JD.decodeString myIntDecoder "5"
 Vous devriez obtenir `Ok 8`. Par contre si on tente de décoder autre
 chose qu'un entier:
 
-````elm
+```elm
 JD.decodeString myIntDecoder "\"Salut\""
 ```
+
 Vous devriez obtenir une erreur.
 
 Cet exemple est bien sûr artificiel (je ne vois pas de cas concret
@@ -310,7 +311,7 @@ myScoreDecoder =
         JD.int
 
 JD.decoderString myScoreDecoder "5"
-````
+```
 
 Devrait donner `Ok {score = 5}` (note : on a ici utilisé 2 noms différents
 pour l'argument de la fonction anonyme et pour le nom du champ `decodedScore`
@@ -350,8 +351,8 @@ JD.map2
 ```
 
 Il y a plusieurs fonctions `map2`, `map3`, ... `map8`. Pour les records
-avec plus de 8 champs, on peut utiliser une autre technique qui sera explorée
-plus tard.
+avec plus de 8 champs, on peut utiliser une autre technique mais que nous
+n'aurons pas le temps d'explorer dans ce cours.
 
 C'est parti pour l'exo 4!
 
@@ -418,7 +419,7 @@ ageDecoder =
 (cela produit exactement le même décodeur que précédemment, mais présenté
 différemment).
 
-Testons le:
+Testons le dans le repl:
 
 ```elm
 JD.decodeString ageDecoder "42"
@@ -497,7 +498,7 @@ cette fonction peut prendre une valeur de n'importe quel type
 pour la transformer en un décodeur qui retournera toujours cette
 valeur comme succès.
 
-Par exemple :
+Par exemple (à exécuter dans le repl) :
 
 ```elm
 always42 = JD.succeed 42
@@ -522,7 +523,7 @@ JD.decodeString alwaysFail """{ "name" : "Seb" }"""
 ressemblance avec la gestion d'erreurs dans Windows est tout à fait volontaire).
 
 > Bon, très bien, on a donc ces décodeurs qui soit échouent tout le temps
-> soit réussisse tout le temps, pourquoi tu bassines avec ça ?
+> soit réussisse tout le temps, pourquoi tu nous bassines avec ça ?
 
 J'aimerais juste insister sur un point : dans tous les cas, ce sont des
 **décodeurs**. Donc partout où on les utilise, on pourrait très bien
@@ -548,13 +549,13 @@ Que nous encodions d'un de ces façons :
 { "kind": "Rect", "width": 10, "length": 32 }
 ```
 
-Donc comme pour les couleurs, on va d'abord décoder une string (le champ `kind`).
+Donc comme pour les couleurs, on va d'abord décoder une string (le champ `kind`), PUIS :
 
 - Si c'est `"Point"`, pas de soucis, on peut dire qu'on a réussi à décoder la
   valeur Elm `Point`
 - Si c'est `"Square"`, le travail n'est pas fini, il faut aller voir si on a un
   champ `side` et dans ce cas on peut encore potentiellement échouer.
-- Si c'est `"Rect"`, le travail n'est pas fini non plus, il faut aller voir si on  
+- Si c'est `"Rect"`, le travail n'est pas fini non plus, il faut aller voir si on
   a un champ `width` et un champ `length`.
 
 Ce qui donne le décodeur suivant:
