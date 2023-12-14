@@ -1,4 +1,4 @@
-module Ex5 exposing (..)
+module Ex5Solved exposing (..)
 
 import Json.Decode as JD exposing (Decoder)
 
@@ -7,7 +7,15 @@ import Json.Decode as JD exposing (Decoder)
 -}
 nonEmptyStringDecoder : Decoder String
 nonEmptyStringDecoder =
-    Debug.todo "nonEmptyString"
+    JD.string
+        |> JD.andThen
+            (\string ->
+                if String.isEmpty string then
+                    JD.fail "the string has to be empty"
+
+                else
+                    JD.succeed string
+            )
 
 
 testNonEmptyStringDecoder =
@@ -35,7 +43,22 @@ et l'âge est positif
 -}
 personDecoder : Decoder Person
 personDecoder =
-    Debug.todo "person"
+    JD.map2 Person
+        (JD.field "name" nonEmptyStringDecoder)
+        (JD.field "age" ageDecoder)
+
+
+ageDecoder : Decoder Int
+ageDecoder =
+    JD.andThen
+        (\decodedInt ->
+            if decodedInt >= 0 then
+                JD.succeed decodedInt
+
+            else
+                JD.fail "l'âge doit être positif"
+        )
+        JD.int
 
 
 testPersonDecoder =

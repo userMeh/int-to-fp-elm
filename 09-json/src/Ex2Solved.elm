@@ -1,4 +1,4 @@
-module Ex2 exposing (..)
+module Ex2Solved exposing (..)
 
 import Json.Decode as JD exposing (Decoder)
 
@@ -20,7 +20,7 @@ aurea probablement besoin d'utiliser ce décodeur:
 -}
 nameDecoder : Decoder String
 nameDecoder =
-    Debug.todo "name"
+    JD.field "name" JD.string
 
 
 testNameDecoder =
@@ -42,7 +42,7 @@ jsonOrder =
 -}
 deepPriceDecoder : Decoder Int
 deepPriceDecoder =
-    Debug.todo "deepPrice"
+    JD.field "product" (JD.field "price" JD.int)
 
 
 testDeepPriceDecoder =
@@ -52,6 +52,14 @@ testDeepPriceDecoder =
 
 -- BONUS: trouver une fonction dans le module `Json.Decode`
 -- permettant de récupérer ce prix de façon plus simple.
+
+
+deepPriceDecoderBonus : Decoder Int
+deepPriceDecoderBonus =
+    JD.at [ "product", "price" ] JD.int
+
+
+
 --------------------------------
 
 
@@ -65,7 +73,7 @@ probablement besoin d'utiliser ce combinateur
 -}
 listOfIntsDecoder : Decoder (List Int)
 listOfIntsDecoder =
-    Debug.todo "listOfInts"
+    JD.list JD.int
 
 
 testListOfIntsDecoder =
@@ -88,7 +96,7 @@ jsonArrayOfArraysOfInts =
 
 listOfListsOfIntsDecoder : Decoder (List (List Int))
 listOfListsOfIntsDecoder =
-    Debug.todo "listOfListsOfInts"
+    JD.list (JD.list JD.int)
 
 
 testListOfListsOfIntsDecoder =

@@ -75,7 +75,7 @@ si vous l'avez modifié, l'appel à
 `Ex1.testAge` fera toujours référence à la version actuelle (il faut quand même
 avoir sauvegardé le fichier !).
 
-À vous de jouer : implémentez tous les encodeurs proposés !
+**À vous de jouer : implémentez tous les encodeurs proposés de l'exercice 1!**
 
 ## Les combinateurs
 
@@ -331,7 +331,7 @@ JD.decodeString myJustDecoder "5"
 
 Devrait donner `Ok (Just 5)`.
 
-Aller, un peu de pratique avec l'exo 3!
+**Aller, un peu de pratique avec l'exo 3!**
 
 ### Combiner plusieurs décodeurs
 
@@ -354,7 +354,44 @@ Il y a plusieurs fonctions `map2`, `map3`, ... `map8`. Pour les records
 avec plus de 8 champs, on peut utiliser une autre technique mais que nous
 n'aurons pas le temps d'explorer dans ce cours.
 
-C'est parti pour l'exo 4!
+> Aparté : écrire la lambda
+>
+> ```elm
+> (\ decodedName decodedAge -> { name = decodedName, age = decodedAge })
+> ```
+>
+> peut être ennuyant et répétitif.
+>
+> Vu que vous êtes sympas, je vais vous donner une astuce.
+> En fait quand on définit un "type alias" qui est un record comme:
+>
+> ```elm
+> type alias Person = { name : String, age: Int }
+> ```
+>
+> on crée 2 choses :
+>
+> - un type `Person` qui est un synonyme de `{ name : String, age : Int}`,
+> - une fonction `Person : String -> Int -> Person` (le premier `Person` désigne
+>   la fonction le second désigne le type).
+>
+> Cette fonction `Person` est équivalente à
+>
+> ```elm
+> \ name age -> { name = name, age = age }
+> ```
+>
+> donc on peut écrire le décodeur
+> plus simplement :
+>
+> ```elm
+> personDecoder =
+>     JD.map2 Person
+>         (JD.field "name" JD.string)
+>         (JD.field "age" JD.int)
+> ```
+
+**C'est parti pour l'exo 4!**
 
 ### "Et puis" l'âge est forcément positif
 
@@ -440,9 +477,9 @@ JD.map2
 ```
 
 > question : quelle est la seule différence par rapport au décodeur précédent
-> d'un personne ?
+> d'une personne ?
 
-Allez hop, on fonce sur l'exo 5. Comment ça c'est l'heure de la pause ?
+**Allez hop, on fonce sur l'exo 5.** Comment ça c'est l'heure de la pause ?
 J'veux pas le savoir, au boulot !
 
 ### "Et puis" on va décoder des types "union" simples
@@ -617,6 +654,10 @@ rectDecoder =
         (JD.field "width" JD.float)
         (JD.field "length" JD.float)
 ```
+
+**Allez, en route pour le dernier exercice de ce TP : le 6 !**
+
+\*\*Et s'il vous reste du temps, un exo bonus, le 7!
 
 \* Et oui, les plus connaisseurs d'entre vous auront reconnus l'opérateur "bind"
 des fameuses monades!

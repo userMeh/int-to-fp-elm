@@ -1,4 +1,4 @@
-module Ex4 exposing (..)
+module Ex4Solved exposing (..)
 
 import Json.Decode as JD exposing (Decoder)
 
@@ -22,7 +22,16 @@ type alias Player =
 
 playerDecoder : Decoder Player
 playerDecoder =
-    Debug.todo "player"
+    JD.map3
+        (\name score origin ->
+            { name = name
+            , score = score
+            , origin = origin
+            }
+        )
+        (JD.field "name" JD.string)
+        (JD.field "score" JD.int)
+        (JD.field "from" JD.string)
 
 
 testPlayerDecoder =
@@ -59,7 +68,14 @@ type alias Board =
 
 boardDecoder : Decoder Board
 boardDecoder =
-    Debug.todo "board"
+    JD.map2
+        (\players games ->
+            { players = players
+            , games = games
+            }
+        )
+        (JD.field "players" (JD.list playerDecoder))
+        (JD.field "games" (JD.list JD.string))
 
 
 testBoardDecoder =
