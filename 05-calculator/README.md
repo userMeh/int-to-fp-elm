@@ -17,6 +17,7 @@ Cela nous permettra d'aborder la gestion des erreurs dans un langage purement fo
    3. Vous devriez voir qu'on a deux types de résultats : `Just <un nombre>` ou
       `Nothing`. Ce `Nothing` indique une absence de valeur. Comment
       traduiriez-vous `Nothing` en Javascript (ou Python, ou C)?
+      Réponse: `undefined` en Javascript, `None` en Python, `NULL` en C.
    4. Vous pouvez contruire vous-même ces valeurs, tentez par exemple de
       rentrer `Just 2.3` ou `Just "blabla"` ou simplement `Nothing`.
    5. Pour finir, taper `String.toInt` dans le repl : la signature de la fonction

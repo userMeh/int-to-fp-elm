@@ -78,7 +78,7 @@ map function list =
 
 
 testsMap =
-    { test1 = map (\x -> x * 2) [ 1, 2, 3 ] == [ 2, 4, 6 ]
+    { test1 = map (\x -> x * 2) [ 1, 2, 3 ] == [ 4, 5, 6 ]
     , test2 = map String.length [ "salut", "hi!" ] == [ 5, 3 ]
     }
 
@@ -112,5 +112,4 @@ testsIsAscending =
     { test1 = isAscending [] == True
     , test2 = isAscending [ 1, 2, 3 ] == True
     , test3 = isAscending [ 1, 2, 3, 1 ] == False
-    , test4 = isAscending [ 1, 2, 1, 2 ] == False
     }

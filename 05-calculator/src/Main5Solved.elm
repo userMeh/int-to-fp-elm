@@ -34,21 +34,6 @@ update msg model =
             { model | number2Input = string }
 
 
-parseInput : Model -> Maybe { number1 : Int, number2 : Int }
-parseInput model =
-    case String.toInt model.number1Input of
-        Just number1 ->
-            case String.toInt model.number2Input of
-                Just number2 ->
-                    Just { number1 = number1, number2 = number2 }
-
-                Nothing ->
-                    Nothing
-
-        Nothing ->
-            Nothing
-
-
 view : Model -> Html Msg
 view model =
     H.div []
@@ -83,10 +68,10 @@ view model =
 
                 -- Le caractère _ est une sorte de "joker", toutes les valeurs vont vérifier cette branche
                 ( Nothing, _ ) ->
-                    H.text "Le premier champ n'est pas un nombre !!"
+                    H.text "Le deuxième champ n'est pas un nombre !!"
 
                 ( _, Nothing ) ->
-                    H.text "Le deuxième champ n'est pas un nombre !!"
+                    H.text "Le premier champ n'est pas un nombre !!"
             ]
         ]
 

@@ -52,7 +52,7 @@ theCarts =
 
 countOrders : List Cart -> Int
 countOrders carts =
-    42
+    Set.size (Set.fromList (List.concatMap .orders carts))
 
 
 test =
