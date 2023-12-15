@@ -19,7 +19,10 @@ exampleInput =
 
 
 computeAnswer1 input =
-    input |> List.map(String.toInt)
+    input |> List.map String.toInt
+    |> List.Map 
+
+
 
 
 exampleAnswer1 =
