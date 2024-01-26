@@ -20,7 +20,7 @@ aurea probablement besoin d'utiliser ce décodeur:
 -}
 nameDecoder : Decoder String
 nameDecoder =
-    Debug.todo "name"
+    JD.field "name" JD.string 
 
 
 testNameDecoder =
@@ -42,7 +42,7 @@ jsonOrder =
 -}
 deepPriceDecoder : Decoder Int
 deepPriceDecoder =
-    Debug.todo "deepPrice"
+    JD.field "product" (JD.field "price" JD.int)
 
 
 testDeepPriceDecoder =
@@ -65,7 +65,7 @@ probablement besoin d'utiliser ce combinateur
 -}
 listOfIntsDecoder : Decoder (List Int)
 listOfIntsDecoder =
-    Debug.todo "listOfInts"
+    JD.list JD.int
 
 
 testListOfIntsDecoder =
@@ -88,7 +88,7 @@ jsonArrayOfArraysOfInts =
 
 listOfListsOfIntsDecoder : Decoder (List (List Int))
 listOfListsOfIntsDecoder =
-    Debug.todo "listOfListsOfInts"
+    JD.list (JD.list JD.int)
 
 
 testListOfListsOfIntsDecoder =

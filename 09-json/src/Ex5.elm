@@ -7,7 +7,14 @@ import Json.Decode as JD exposing (Decoder)
 -}
 nonEmptyStringDecoder : Decoder String
 nonEmptyStringDecoder =
-    Debug.todo "nonEmptyString"
+    JD.string
+        |> JD.andThen
+            (\str ->
+                if str == "" then
+                    JD.fail "empty"
+                else
+                    JD.succeed str
+            )
 
 
 testNonEmptyStringDecoder =
@@ -35,7 +42,16 @@ et l'âge est positif
 -}
 personDecoder : Decoder Person
 personDecoder =
-    Debug.todo "person"
+    JD.map2 Person
+        (JD.field "name" nonEmptyStringDecoder)
+        (JD.field "age" JD.int)
+        |> JD.andThen
+            (\person ->
+                if person.age < 0 then
+                    JD.fail "Invalid age"
+                else
+                    JD.succeed person
+            )
 
 
 testPersonDecoder =

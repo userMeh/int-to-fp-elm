@@ -8,7 +8,7 @@ import List exposing (product)
 
 encodeAge : Int -> Value
 encodeAge age =
-    Debug.todo "age"
+    JE.int age
 
 
 testAge =
@@ -27,7 +27,7 @@ testAge =
 
 encodeName : String -> Value
 encodeName name =
-    Debug.todo "name"
+    JE.string name
 
 
 testName =
@@ -46,7 +46,7 @@ testName =
 
 encodeListOfInts : List Int -> Value
 encodeListOfInts ints =
-    Debug.todo "listOfInts"
+    JE.list JE.int ints
 
 
 testListOfInts =
@@ -71,7 +71,11 @@ type alias Person =
 
 encodePerson : Person -> Value
 encodePerson person =
-    Debug.todo "person"
+    JE.object
+        [ 
+            ("name", JE.string person.name), 
+            ("age", JE.int person.age)
+        ]
 
 
 testPerson =
@@ -98,7 +102,11 @@ of an object from its Elm's type!
 -}
 encodePerson2 : Person -> Value
 encodePerson2 person =
-    Debug.todo "person2"
+    JE.object 
+        [ 
+            ("fullName", JE.string person.name),
+            ("years", JE.int person.age) 
+        ]
 
 
 testPerson2 =
@@ -126,7 +134,11 @@ type alias Product =
 
 encodeProduct : Product -> Value
 encodeProduct product =
-    Debug.todo "product"
+    JE.object
+        [ 
+            ("name", JE.string product.name),
+            ("price", JE.int product.price) 
+        ]
 
 
 testProduct =
@@ -157,7 +169,12 @@ type alias Order =
 -}
 encodeOrder : Order -> Value
 encodeOrder order =
-    Debug.todo "order"
+    JE.object
+        [ 
+            ("person", encodePerson order.person),
+            ("product", encodeProduct order.product),
+            ("quantity", JE.int order.quantity)
+        ]
 
 
 testOrder =
@@ -202,7 +219,12 @@ type alias FriendlyPerson =
 -}
 encodeFriendlyPerson : FriendlyPerson -> Value
 encodeFriendlyPerson friendlyPerson =
-    Debug.todo "friendlyPerson"
+    JE.object
+        [ 
+            ("name", JE.string friendlyPerson.name),
+            ("age", JE.int friendlyPerson.age),
+            ("friends", JE.list encodePerson friendlyPerson.friends)
+        ]
 
 
 testFriendlyPerson =
@@ -244,7 +266,24 @@ Here are some examples of encoded values:
 -}
 encodeShape : Shape -> Value
 encodeShape shape =
-    Debug.todo "shape"
+    case shape of
+        Point ->
+            JE.object [ ("kind", JE.string "Point") ]
+
+        Square { side } ->
+            JE.object
+                [ 
+                    ("kind", JE.string "Square"), 
+                    ("side", JE.float side)
+                ]
+
+        Rect { width, length } ->
+            JE.object
+                [ 
+                    ("kind", JE.string "Rect"), 
+                    ("width", JE.float width), 
+                    ("length", JE.float length)
+                ]
 
 
 testShape =
@@ -307,7 +346,8 @@ JSON object.
 -}
 encodePeopleTable : Dict String Person -> Value
 encodePeopleTable peoplyById =
-    Debug.todo "peopleTable"
+    JE.object
+        [ ("people", JE.dict identity encodePerson peoplyById) ]
 
 
 testPeopleTable =

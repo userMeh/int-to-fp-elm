@@ -310,7 +310,7 @@ myScoreDecoder =
         (\decodedScore -> { score = decodedScore })
         JD.int
 
-JD.decoderString myScoreDecoder "5"
+JD.decodeString myScoreDecoder "5"
 ```
 
 Devrait donner `Ok {score = 5}` (note : on a ici utilisé 2 noms différents

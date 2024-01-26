@@ -19,7 +19,8 @@ record.
 -}
 ageDecoder : Decoder { age : Int }
 ageDecoder =
-    Debug.todo "ageDecoder"
+    JD.field "age" JD.int 
+        |> JD.map (\ageJson -> { age = ageJson })
 
 
 testNameDecoder =

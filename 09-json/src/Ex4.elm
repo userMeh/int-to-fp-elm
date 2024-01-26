@@ -22,7 +22,10 @@ type alias Player =
 
 playerDecoder : Decoder Player
 playerDecoder =
-    Debug.todo "player"
+    JD.map3 Player
+        (JD.field "name" JD.string)
+        (JD.field "score" JD.int)
+        (JD.field "from" JD.string)
 
 
 testPlayerDecoder =
@@ -59,7 +62,9 @@ type alias Board =
 
 boardDecoder : Decoder Board
 boardDecoder =
-    Debug.todo "board"
+    JD.map2 Board
+        (JD.field "players" (JD.list playerDecoder))
+        (JD.field "games" (JD.list JD.string))
 
 
 testBoardDecoder =
