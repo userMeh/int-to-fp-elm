@@ -1,4 +1,4 @@
-import * as Color from "./color.js";
+import * as Color from './color.js';
 
 /**
  * @typedef { Color.Color} Color
@@ -24,7 +24,16 @@ import * as Color from "./color.js";
  * @returns {Shape}
  */
 export function square(color, side) {
-  return { kind: "Polygon", color, points: [{x: -side/2, y: -side/2}, {x: side/2, y: -side/2}, {x: side/2, y: side/2}, {x: -side/2, y: side/2}] };
+  return {
+    kind: 'Polygon',
+    color,
+    points: [
+      { x: -side / 2, y: -side / 2 },
+      { x: side / 2, y: -side / 2 },
+      { x: side / 2, y: side / 2 },
+      { x: -side / 2, y: side / 2 },
+    ],
+  };
 }
 
 /**
@@ -33,7 +42,7 @@ export function square(color, side) {
  * @returns {Shape}
  */
 export function circle(color, radius) {
-  return { kind: "Circle", radius, color, xCenter: 0, yCenter: 0 };
+  return { kind: 'Circle', radius, color, xCenter: 0, yCenter: 0 };
 }
 
 /**
@@ -41,7 +50,7 @@ export function circle(color, radius) {
  * @returns {Shape}
  */
 export function group(shapes) {
-  return { kind: "Group", shapes };
+  return { kind: 'Group', shapes };
 }
 
 /**
@@ -50,7 +59,7 @@ export function group(shapes) {
  * @returns {Shape}
  */
 export function polygon(color, points) {
-  return { kind: "Polygon", color, points };
+  return { kind: 'Polygon', color, points };
 }
 
 /**
@@ -60,7 +69,16 @@ export function polygon(color, points) {
  * @returns {Shape}
  */
 export function rectangle(color, width, height) {
-  return { kind: "Polygon", color, points: [{x: -width/2, y: -height/2}, {x: width/2, y: -height/2}, {x: width/2, y: height/2}, {x: -width/2, y: height/2}] };
+  return {
+    kind: 'Polygon',
+    color,
+    points: [
+      { x: -width / 2, y: -height / 2 },
+      { x: width / 2, y: -height / 2 },
+      { x: width / 2, y: height / 2 },
+      { x: -width / 2, y: height / 2 },
+    ],
+  };
 }
 
 /**
@@ -74,14 +92,17 @@ export function rectangle(color, width, height) {
  */
 export function move(dx, dy, shape) {
   switch (shape.kind) {
-    case "Circle":
+    case 'Circle':
       return { ...shape, xCenter: shape.xCenter + dx, yCenter: shape.yCenter + dy };
-    case "Group":
+    case 'Group':
       return { ...shape, shapes: shape.shapes.map((shape) => move(dx, dy, shape)) };
-    case "Polygon":
-      return { ...shape, points: shape.points.map((point) => ({x: point.x + dx, y: point.y + dy})) };
+    case 'Polygon':
+      return {
+        ...shape,
+        points: shape.points.map((point) => ({ x: point.x + dx, y: point.y + dy })),
+      };
     default:
-      throw "Unexpected! Some case is missing";
+      throw 'Unexpected! Some case is missing';
   }
 }
 
@@ -103,24 +124,18 @@ export function renderCentered(shape, context) {
  */
 function render(shape, context) {
   switch (shape.kind) {
-    case "Circle":
-      renderCircle(
-        shape.color,
-        shape.xCenter,
-        shape.yCenter,
-        shape.radius,
-        context
-      );
+    case 'Circle':
+      renderCircle(shape.color, shape.xCenter, shape.yCenter, shape.radius, context);
       break;
-    case "Polygon":
+    case 'Polygon':
       context.fillStyle = Color.render(shape.color);
       context.fill(polygonToPath(shape.points));
       break;
-    case "Group":
+    case 'Group':
       shape.shapes.forEach((shape) => render(shape, context));
       break;
     default:
-      throw "Unexpected! Some case is missing";
+      throw 'Unexpected! Some case is missing';
   }
 }
 
@@ -139,13 +154,13 @@ function renderCircle(color, xCenter, yCenter, radius, context) {
 }
 
 /**
-* @returns {Path2D}
-* @param {Array<{x:number;y:number}>} points
-*/
-function polygonToPath(points){
+ * @returns {Path2D}
+ * @param {Array<{x:number;y:number}>} points
+ */
+function polygonToPath(points) {
   const path = new Path2D();
   path.moveTo(points[0].x, points[0].y);
-  for(let i = 1; i < points.length; i++){
+  for (let i = 1; i < points.length; i++) {
     path.lineTo(points[i].x, points[i].y);
   }
   path.closePath();
